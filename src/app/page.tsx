@@ -21,10 +21,9 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 
-import logo_white from "../../public/logo_white.png";
-
+import logo from "../../public/logo.png";
 // ------------------------------
-// WebShiftStudio – AI-focused one-page site
+// ShiftSense Studio – AI-focused one-page site
 // ------------------------------
 
 type NavItem = { id: string; label: string };
@@ -105,7 +104,7 @@ const TESTIMONIALS: Testimonial[] = [
     name: "Marcus Young",
     role: "Founder, NovaTech",
     quote:
-      "Demos, signups, follow-ups… they’re all automated now. WebShiftStudio turned our website into a full-time sales rep.",
+      "Demos, signups, follow-ups… they’re all automated now. ShiftSense Studio turned our website into a full-time sales rep.",
     stars: 5,
   },
   {
@@ -129,7 +128,7 @@ function Header() {
             className="flex items-center gap-3 font-semibold hover:opacity-90 transition-transform duration-200 hover:-translate-y-0.5"
           >
             <span className="text-lg md:text-xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-fuchsia-600">
-              WebShiftStudio
+              ShiftSense Studio
             </span>
           </a>
           <nav className="hidden md:flex items-center gap-6 text-sm">
@@ -212,7 +211,7 @@ function Hero() {
               .
             </h1>
             <p className="text-neutral-600 dark:text-neutral-300 max-w-xl">
-              WebShiftStudio designs and builds smart websites that don’t just look good—
+              ShiftSense Studio designs and builds smart websites that don’t just look good—
               they <strong>answer questions, book reservations, qualify leads, and send
               follow-ups with AI</strong>. Your site becomes your hardest-working team member.
             </p>
@@ -230,7 +229,6 @@ function Hero() {
                 See What We Automate
               </a>
             </div>
-            
           </motion.div>
 
           <motion.div
@@ -244,7 +242,7 @@ function Hero() {
               <div className="absolute inset-0 grid place-items-center p-6">
                 <div className="text-center">
                   <div className="mx-auto mb-6 size-64 rounded-2xl grid place-items-center bg-white/70 dark:bg-neutral-900/60 backdrop-blur border border-black/10 dark:border-white/10">
-                    <Image alt="logo" src={logo_white} />
+                    <Image alt="logo" src={logo} />
                   </div>
                   <p className="text-sm uppercase tracking-[0.2em] text-neutral-500 dark:text-neutral-400">
                     Design • Build • Automate
@@ -435,7 +433,7 @@ function AiIdeas() {
             </p>
           </div>
           <div className="text-sm text-neutral-600 dark:text-neutral-300">
-            <span className="inline-flex items-center gap-2 rounded-full border border-black/10 dark:border-white/10 px-3 py-1 bg-white/60 dark:bg-neutral-900/60 backdrop-blur transition hover:-translate-y-0.5 hover:shadow-md">
+            <span className="inline-flex items-center gap-2 rounded-full border border-black/10 dark:border-white/10 px-3 py-1 bg.white/60 dark:bg-neutral-900/60 backdrop-blur transition hover:-translate-y-0.5 hover:shadow-md">
               <Sparkles className="size-4" />
               Custom flows for your business, not templates.
             </span>
@@ -616,8 +614,8 @@ function About() {
               We don’t just “add AI” — we design around it
             </h2>
             <p className="mt-3 text-neutral-600 dark:text-neutral-300">
-              WebShiftStudio is a small team of designers, developers, and automation nerds
-              obsessed with one thing:{" "}
+              ShiftSense Studio is a small team of designers, developers, and automation
+              nerds obsessed with one thing:{" "}
               <span className="font-semibold">
                 turning your website into a machine that reliably brings you business.
               </span>{" "}
@@ -626,7 +624,7 @@ function About() {
             </p>
             <ul className="mt-6 grid sm:grid-cols-2 gap-3">
               {perks.map((p) => (
-                <li key={p} className="flex items-start gap-2 text-sm">
+                <li key={p} className="flex items.start gap-2 text-sm">
                   <CheckCircle2 className="mt-0.5 size-4 shrink-0" />
                   <span>{p}</span>
                 </li>
@@ -657,9 +655,9 @@ function Contact() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const subject = encodeURIComponent("AI Website & Automation Inquiry – WebShiftStudio");
+    const subject = encodeURIComponent("AI Website & Automation Inquiry – ShiftSense Studio");
     const body = encodeURIComponent(
-      `Hi WebShiftStudio,%0D%0A%0D%0AMy name is ${name}.%0D%0A%0D%0A${message}%0D%0A%0D%0AContact me at: ${email}`
+      `Hi ShiftSense Studio,%0D%0A%0D%0AMy name is ${name}.%0D%0A%0D%0A${message}%0D%0A%0D%0AContact me at: ${email}`
     );
     window.location.href = `mailto:hello@webshift.studio?subject=${subject}&body=${body}`;
   };
@@ -732,7 +730,7 @@ function Contact() {
             transition={{ duration: 0.4, delay: 0.1 }}
             className="rounded-3xl border border-white/20 bg-white/70 dark:bg-neutral-900/90 backdrop-blur-2xl shadow-[0_0_18px_rgba(15,23,42,0.4)] hover:shadow-[0_0_30px_rgba(79,70,229,0.7)] hover:-translate-y-1 transition duration-300 p-6 sm:p-8"
           >
-            <div className="mb-4 flex items-center justify-between gap-3">
+            <div className="mb-4 flex.items-center justify-between gap-3">
               <div>
                 <h3 className="text-lg font-semibold">Quick project brief</h3>
                 <p className="text-xs text-neutral-500">
@@ -806,10 +804,10 @@ function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2">
             <Sparkles className="size-5" />
-            <span className="font-semibold">WebShiftStudio</span>
+            <span className="font-semibold">ShiftSense Studio</span>
           </div>
           <p className="text-sm text-neutral-400">
-            © {new Date().getFullYear()} WebShiftStudio. AI-powered experiences, human-first
+            © {new Date().getFullYear()} ShiftSense Studio. AI-powered experiences, human-first
             results.
           </p>
           <div className="text-sm">
