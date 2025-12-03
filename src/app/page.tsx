@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import type { ReactNode, FormEvent } from "react";
 import { motion } from "framer-motion";
-import { SpeedInsights } from "@vercel/speed-insights/next"
 import {
   ArrowRight,
   CheckCircle2,
