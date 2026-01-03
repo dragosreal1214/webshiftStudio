@@ -21,6 +21,7 @@ import {
 import Image from "next/image";
 
 import logo from "../../public/logo.png";
+
 // ------------------------------
 // ShiftSense Studio – AI-focused one-page site
 // ------------------------------
@@ -84,6 +85,17 @@ const SERVICES: Service[] = [
   },
 ];
 
+// ✅ shared card style: clean in light, glassy in dark
+const CARD =
+  "relative overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm " +
+  "hover:shadow-lg hover:-translate-y-1 transition duration-300 " +
+  "dark:border-white/10 dark:bg-neutral-900/70 dark:backdrop-blur-xl " +
+  "dark:shadow-[0_0_10px_rgba(15,23,42,0.35)] dark:hover:shadow-[0_0_26px_rgba(79,70,229,0.6)]";
+
+const CARD_GLOW =
+  "pointer-events-none absolute inset-0 bg-gradient-to-br from-black/[0.04] via-transparent to-transparent " +
+  "dark:from-white/5 dark:via-transparent dark:to-transparent";
+
 function Header() {
   const [open, setOpen] = useState(false);
 
@@ -99,6 +111,7 @@ function Header() {
               ShiftSense Studio
             </span>
           </a>
+
           <nav className="hidden md:flex items-center gap-6 text-sm">
             {NAV.map((n) => (
               <a
@@ -116,6 +129,7 @@ function Header() {
               Automate My Business <ArrowRight className="size-4" />
             </a>
           </nav>
+
           <button
             className="md:hidden rounded-lg p-2 hover:bg-black/5 dark:hover:bg-white/10 transition-transform duration-150 hover:scale-105"
             onClick={() => setOpen((v) => !v)}
@@ -125,6 +139,7 @@ function Header() {
           </button>
         </div>
       </div>
+
       {open && (
         <div className="md:hidden border-t border-black/5 dark:border-white/10">
           <div className="mx-auto max-w-7xl px-4 py-3 grid gap-2">
@@ -167,10 +182,11 @@ function Hero() {
             transition={{ duration: 0.6 }}
             className="space-y-6"
           >
-            <p className="inline-flex items-center gap-2 rounded-full border border-black/10 dark:border-white/10 px-3 py-1 text-xs font-medium w-fit">
+            <p className="inline-flex items-center gap-2 rounded-full border border-black/10 dark:border-white/10 px-3 py-1 text-xs font-medium w-fit bg-white/60 dark:bg-neutral-900/40">
               <Rocket className="size-4" />
               AI-powered websites that work while you sleep
             </p>
+
             <h1 className="text-4xl md:text-5xl/tight font-extrabold tracking-tight">
               Turn clicks into clients{" "}
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-fuchsia-600">
@@ -178,11 +194,16 @@ function Hero() {
               </span>
               .
             </h1>
+
             <p className="text-neutral-600 dark:text-neutral-300 max-w-xl">
               ShiftSense Studio designs and builds smart websites that don’t just look good—
-              they <strong>answer questions, book reservations, qualify leads, and send
-              follow-ups with AI</strong>. Your site becomes your hardest-working team member.
+              they{" "}
+              <strong>
+                answer questions, book reservations, qualify leads, and send follow-ups with AI
+              </strong>
+              . Your site becomes your hardest-working team member.
             </p>
+
             <div className="flex flex-wrap items-center gap-3">
               <a
                 href="#contact"
@@ -209,17 +230,17 @@ function Hero() {
             <div className="aspect-[4/3] rounded-3xl border border-black/10 dark:border-white/10 shadow-xl overflow-hidden bg-gradient-to-br from-indigo-600/20 to-fuchsia-600/20">
               <div className="absolute inset-0 grid place-items-center p-6">
                 <div className="text-center">
-                  <div className="mx-auto mb-6 size-64 rounded-2xl grid place-items-center bg-white/70 dark:bg-neutral-900/60 backdrop-blur border border-black/10 dark:border-white/10">
+                  <div className="mx-auto mb-6 size-64 rounded-2xl grid place-items-center bg-white/80 dark:bg-neutral-900/60 backdrop-blur border border-black/10 dark:border-white/10">
                     <Image alt="logo" src={logo} />
                   </div>
                   <p className="text-sm uppercase tracking-[0.2em] text-neutral-500 dark:text-neutral-400">
                     Design • Build • Automate
                   </p>
                   <div className="flex justify-center mt-4 gap-2 text-xs text-neutral-500 dark:text-neutral-400">
-                    <span className="inline-flex items-center gap-1 rounded-full border border-black/10 dark:border-white/10 px-3 py-1">
+                    <span className="inline-flex items-center gap-1 rounded-full border border-black/10 dark:border-white/10 px-3 py-1 bg-white/60 dark:bg-neutral-900/40">
                       <Bot className="size-3" /> AI chat & bookings
                     </span>
-                    <span className="inline-flex items-center gap-1 rounded-full border border-black/10 dark:border-white/10 px-3 py-1">
+                    <span className="inline-flex items-center gap-1 rounded-full border border-black/10 dark:border-white/10 px-3 py-1 bg-white/60 dark:bg-neutral-900/40">
                       <Sparkles className="size-3" /> Automated follow-ups
                     </span>
                   </div>
@@ -266,11 +287,11 @@ function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4 }}
-              className="relative overflow-hidden rounded-2xl border border-white/20 dark:border-white/10 bg-white/10 dark:bg-neutral-900/70 backdrop-blur-xl shadow-[0_0_10px_rgba(15,23,42,0.35)] hover:shadow-[0_0_26px_rgba(79,70,229,0.6)] hover:border-indigo-300/60 dark:hover:border-fuchsia-400/60 hover:-translate-y-1 transition duration-300"
+              className={CARD}
             >
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/25 via-white/5 to-transparent dark:from-white/5 dark:via-transparent dark:to-transparent" />
+              <div className={CARD_GLOW} />
               <div className="relative p-5">
-                <div className="size-10 rounded-xl grid place-items-center bg-gradient-to-tr from-indigo-500/20 to-fuchsia-500/20 border border-white/40 dark:border-white/20 backdrop-blur">
+                <div className="size-10 rounded-xl grid place-items-center bg-gradient-to-tr from-indigo-500/15 to-fuchsia-500/15 border border-black/10 dark:border-white/20 backdrop-blur">
                   {s.icon}
                 </div>
                 <h3 className="mt-4 text-lg font-semibold">{s.title}</h3>
@@ -279,8 +300,8 @@ function Services() {
                 </p>
                 <ul className="mt-4 space-y-2 text-sm">
                   {s.bullets.map((b) => (
-                    <li key={b} className="flex items-start gap-2">
-                      <CheckCircle2 className="mt-0.5 size-4 shrink-0" />
+                    <li key={b} className="flex items-start gap-2 text-neutral-700 dark:text-neutral-200">
+                      <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-indigo-500" />
                       <span>{b}</span>
                     </li>
                   ))}
@@ -401,7 +422,8 @@ function AiIdeas() {
             </p>
           </div>
           <div className="text-sm text-neutral-600 dark:text-neutral-300">
-            <span className="inline-flex items-center gap-2 rounded-full border border-black/10 dark:border-white/10 px-3 py-1 bg.white/60 dark:bg-neutral-900/60 backdrop-blur transition hover:-translate-y-0.5 hover:shadow-md">
+            {/* ✅ FIXED: bg.white/60 -> bg-white/60 */}
+            <span className="inline-flex items-center gap-2 rounded-full border border-black/10 dark:border-white/10 px-3 py-1 bg-white/60 dark:bg-neutral-900/60 backdrop-blur transition hover:-translate-y-0.5 hover:shadow-md">
               <Sparkles className="size-4" />
               Custom flows for your business, not templates.
             </span>
@@ -416,12 +438,12 @@ function AiIdeas() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4 }}
-              className="relative overflow-hidden rounded-2xl border border-white/20 dark:border-white/10 bg-white/10 dark:bg-neutral-900/70 backdrop-blur-xl shadow-[0_0_10px_rgba(15,23,42,0.35)] hover:shadow-[0_0_26px_rgba(79,70,229,0.6)] hover:border-indigo-300/60 dark:hover:border-fuchsia-400/60 hover:-translate-y-1 transition duration-300"
+              className={CARD}
             >
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/25 via-white/5 to-transparent dark:from-white/5 dark:via-transparent dark:to-transparent" />
+              <div className={CARD_GLOW} />
               <div className="relative p-6">
                 <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-neutral-500 dark:text-neutral-400">
-                  <div className="size-8 rounded-xl grid place-items-center bg-white/60 dark:bg-neutral-900/60 border border-white/40 dark:border-white/20 backdrop-blur">
+                  <div className="size-8 rounded-xl grid place-items-center bg-white/70 dark:bg-neutral-900/60 border border-black/10 dark:border-white/20 backdrop-blur">
                     {idea.icon}
                   </div>
                   <span>{idea.label}</span>
@@ -432,8 +454,8 @@ function AiIdeas() {
                 </p>
                 <ul className="mt-4 space-y-2 text-sm">
                   {idea.bullets.map((b) => (
-                    <li key={b} className="flex items-start gap-2">
-                      <CheckCircle2 className="mt-0.5 size-4 shrink-0" />
+                    <li key={b} className="flex items-start gap-2 text-neutral-700 dark:text-neutral-200">
+                      <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-indigo-500" />
                       <span>{b}</span>
                     </li>
                   ))}
@@ -476,12 +498,14 @@ function Process() {
       desc: "We go live, track how users behave, then refine prompts, flows, and UI to squeeze out maximum ROI.",
     },
   ];
+
   return (
     <Section id="process" className="py-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
           How we work with you
         </h2>
+
         <div className="mt-10 grid md:grid-cols-4 gap-6">
           {steps.map((s, i) => (
             <motion.div
@@ -490,11 +514,11 @@ function Process() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4 }}
-              className="relative overflow-hidden rounded-2xl border border-white/20 dark:border-white/10 bg-white/10 dark:bg-neutral-900/70 backdrop-blur-xl shadow-[0_0_10px_rgba(15,23,42,0.35)] hover:shadow-[0_0_26px_rgba(79,70,229,0.6)] hover:border-indigo-300/60 dark:hover:border-fuchsia-400/60 hover:-translate-y-1 transition duration-300"
+              className={CARD}
             >
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/25 via-white/5 to-transparent dark:from-white/5 dark:via-transparent dark:to-transparent" />
+              <div className={CARD_GLOW} />
               <div className="relative pt-8 pb-10 px-6">
-                <div className="absolute top-3 left-4 rounded-full border border-white/70 dark:border-white/20 bg-black/70 dark:bg-black/80 px-3 py-1 text-xs font-semibold text-white">
+                <div className="absolute top-3 left-4 rounded-full border border-black/10 dark:border-white/20 bg-white/70 dark:bg-black/80 px-3 py-1 text-xs font-semibold text-neutral-900 dark:text-white">
                   Step {i + 1}
                 </div>
 
@@ -503,8 +527,8 @@ function Process() {
                   {s.desc}
                 </p>
 
-                <div className="absolute bottom-3 left-4 inline-flex items-center gap-2 rounded-full bg-black/60 dark:bg-black/70 border border-white/15 px-3 py-1 text-[11px] text-neutral-100">
-                  <span className="inline-block size-2.5 rounded-full bg-purple-400 shadow-[0_0_12px_rgba(52,211,153,0.9)] animate-pulse" />
+                <div className="absolute bottom-3 left-4 inline-flex items-center gap-2 rounded-full bg-neutral-900/90 dark:bg-black/70 border border-white/10 px-3 py-1 text-[11px] text-white">
+                  <span className="inline-block size-2.5 rounded-full bg-purple-400 animate-pulse" />
                   <span>AI-optimized step</span>
                 </div>
               </div>
@@ -532,7 +556,7 @@ function About() {
   ];
 
   return (
-    <Section id="about" className="py-20 dark:bg-neutral-950">
+    <Section id="about" className="py-20 bg-white dark:bg-neutral-950">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-10 items-center">
           <motion.div
@@ -555,7 +579,10 @@ function About() {
             </p>
             <ul className="mt-6 grid sm:grid-cols-2 gap-3">
               {perks.map((p) => (
-                <li key={p} className="flex items-start gap-2 text-sm text-neutral-600 dark:text-neutral-300">
+                <li
+                  key={p}
+                  className="flex items-start gap-2 text-sm text-neutral-600 dark:text-neutral-300"
+                >
                   <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-indigo-500" />
                   <span>{p}</span>
                 </li>
@@ -564,17 +591,15 @@ function About() {
           </motion.div>
 
           <div className="relative">
-            {/* The Main Container Card - Matching Services/Ideas style */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.1 }}
-              className="relative overflow-hidden rounded-3xl border border-white/20 dark:border-white/10 bg-white/10 dark:bg-neutral-900/70 backdrop-blur-xl shadow-[0_0_10px_rgba(15,23,42,0.35)] hover:shadow-[0_0_26px_rgba(79,70,229,0.6)] hover:border-indigo-300/60 dark:hover:border-fuchsia-400/60 hover:-translate-y-1 transition duration-300 p-8 flex flex-col items-center justify-center min-h-[320px]"
+              className={`${CARD} rounded-3xl p-8 flex flex-col items-center justify-center min-h-[320px]`}
             >
-              {/* Internal Gradient overlay matching your cards */}
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/25 via-white/5 to-transparent dark:from-white/5 dark:via-transparent dark:to-transparent" />
-              
+              <div className={CARD_GLOW} />
+
               <div className="relative z-10 w-full">
                 <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500 dark:text-neutral-400 mb-8">
                   Powering our solutions with
@@ -582,21 +607,22 @@ function About() {
 
                 <div className="grid grid-cols-2 gap-4">
                   {techStack.map((tech) => (
-                    <div 
+                    <div
                       key={tech.name}
-                      className="flex items-center gap-3 p-4 rounded-2xl bg-white/40 dark:bg-white/5 border border-white/40 dark:border-white/10 grayscale hover:grayscale-0 transition-all duration-300 group"
+                      className="flex items-center gap-3 p-4 rounded-2xl bg-neutral-50 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:bg-white dark:hover:bg-white/10 transition-all duration-300 group"
                     >
-                      <div className="size-8 rounded-lg grid place-items-center bg-gradient-to-tr from-indigo-500/20 to-fuchsia-500/20 border border-white/40 dark:border-white/20 backdrop-blur group-hover:scale-110 transition-transform">
+                      <div className="size-8 rounded-lg grid place-items-center bg-gradient-to-tr from-indigo-500/15 to-fuchsia-500/15 border border-black/10 dark:border-white/20 backdrop-blur group-hover:scale-110 transition-transform">
                         {tech.icon}
                       </div>
-                      <span className="font-medium text-sm text-neutral-700 dark:text-neutral-200">{tech.name}</span>
+                      <span className="font-medium text-sm text-neutral-700 dark:text-neutral-200">
+                        {tech.name}
+                      </span>
                     </div>
                   ))}
                 </div>
               </div>
             </motion.div>
 
-            {/* Floating Tag - Updated to match your hover colors */}
             <div className="absolute -bottom-4 -right-4 rounded-2xl bg-white dark:bg-neutral-900 border border-black/10 dark:border-white/10 px-4 py-3 shadow-2xl transition hover:-translate-y-1 hover:shadow-indigo-500/20">
               <div className="flex items-center gap-2">
                 <Sparkles className="size-4 text-fuchsia-500 animate-pulse" />
@@ -635,7 +661,8 @@ function Contact() {
 
   return (
     <Section id="contact" className="py-20 relative overflow-hidden">
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-indigo-500/15 via-fuchsia-500/5 to-neutral-900/80 dark:from-indigo-500/25 dark:via-fuchsia-500/10 dark:to-black" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-indigo-500/10 via-fuchsia-500/5 to-white dark:from-indigo-500/25 dark:via-fuchsia-500/10 dark:to-black" />
+
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
@@ -644,14 +671,16 @@ function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
           >
-            <p className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/10 px-3 py-1 text-xs font-medium text-white/80 mb-4">
+            <p className="inline-flex items-center gap-2 rounded-full border border-black/10 dark:border-white/10 bg-white/70 dark:bg-black/10 px-3 py-1 text-xs font-medium text-neutral-700 dark:text-white/80 mb-4">
               <Sparkles className="size-4" />
               Tell me what you want to stop doing manually
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">
+
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-neutral-900 dark:text-white">
               Let&apos;s design a website that doesn&apos;t need you watching it 24/7.
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-neutral-200 max-w-lg">
+
+            <p className="mt-3 text-sm sm:text-base text-neutral-700 dark:text-neutral-200 max-w-lg">
               Share what your business does and what you&apos;re sick of doing manually.
               I&apos;ll come back with a simple plan for how your website and AI can take it
               over—no fluff, no spam.
@@ -661,15 +690,15 @@ function Contact() {
               {quickOptions.map((opt) => (
                 <div
                   key={opt}
-                  className="flex items-start gap-2 rounded-2xl bg-black/15 border border-white/15 px-3 py-2 text-neutral-100 shadow-[0_0_10px_rgba(15,23,42,0.45)] hover:shadow-[0_0_22px_rgba(79,70,229,0.6)] hover:-translate-y-0.5 transition duration-300"
+                  className="flex items-start gap-2 rounded-2xl bg-white/70 dark:bg-black/15 border border-black/10 dark:border-white/15 px-3 py-2 text-neutral-900 dark:text-neutral-100 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition duration-300"
                 >
-                  <CheckCircle2 className="mt-0.5 size-4 shrink-0" />
+                  <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-indigo-500" />
                   <span>{opt}</span>
                 </div>
               ))}
             </div>
 
-            <div className="mt-6 flex flex-wrap items-center gap-4 text-xs sm:text-sm text-neutral-200">
+            <div className="mt-6 flex flex-wrap items-center gap-4 text-xs sm:text-sm text-neutral-700 dark:text-neutral-200">
               <div className="flex items-center gap-2">
                 <CalendarClock className="size-4" />
                 <span>Replies usually within 24 hours</span>
@@ -678,7 +707,7 @@ function Contact() {
                 <Mail className="size-4" />
                 <a
                   href="mailto:dragos.axinte.business@gmail.com"
-                  className="underline underline-offset-4 hover:text-indigo-200 transition-colors"
+                  className="underline underline-offset-4 hover:text-indigo-700 dark:hover:text-indigo-200 transition-colors"
                 >
                   dragos.axinte.business@gmail.com
                 </a>
@@ -692,9 +721,10 @@ function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: 0.1 }}
-            className="rounded-3xl border border-white/20 bg-white/70 dark:bg-neutral-900/90 backdrop-blur-2xl shadow-[0_0_18px_rgba(15,23,42,0.4)] hover:shadow-[0_0_30px_rgba(79,70,229,0.7)] hover:-translate-y-1 transition duration-300 p-6 sm:p-8"
+            className="rounded-3xl border border-black/10 dark:border-white/20 bg-white/80 dark:bg-neutral-900/90 backdrop-blur-2xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300 p-6 sm:p-8"
           >
-            <div className="mb-4 flex.items-center justify-between gap-3">
+            {/* ✅ FIXED: flex.items-center -> flex items-center */}
+            <div className="mb-4 flex items-center justify-between gap-3">
               <div>
                 <h3 className="text-lg font-semibold">Quick project brief</h3>
                 <p className="text-xs text-neutral-500">
@@ -708,40 +738,44 @@ function Contact() {
                 </span>
               </div>
             </div>
+
             <div className="grid gap-4">
               <div>
                 <label className="text-sm font-medium">Name</label>
                 <input
-                  className="mt-1 w-full rounded-xl border border-black/10 dark:border-white/10 bg-white/80 dark:bg-neutral-900/70 px-3 py-2 outline-none focus:ring-2 focus:ring-indigo-500 transition-shadow"
+                  className="mt-1 w-full rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-neutral-900/70 px-3 py-2 outline-none focus:ring-2 focus:ring-indigo-500 transition-shadow"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Your name"
                   required
                 />
               </div>
+
               <div>
                 <label className="text-sm font-medium">Email</label>
                 <input
                   type="email"
-                  className="mt-1 w-full rounded-xl border border-black/10 dark:border-white/10 bg-white/80 dark:bg-neutral-900/70 px-3 py-2 outline-none focus:ring-2 focus:ring-indigo-500 transition-shadow"
+                  className="mt-1 w-full rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-neutral-900/70 px-3 py-2 outline-none focus:ring-2 focus:ring-indigo-500 transition-shadow"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@company.com"
                   required
                 />
               </div>
+
               <div>
                 <label className="text-sm font-medium">
                   What does your business do & what do you want to automate?
                 </label>
                 <textarea
-                  className="mt-1 w-full rounded-xl border border-black/10 dark:border-white/10 bg-white/80 dark:bg-neutral-900/70 px-3 py-2 outline-none focus:ring-2 focus:ring-indigo-500 min-h-32 transition-shadow"
+                  className="mt-1 w-full rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-neutral-900/70 px-3 py-2 outline-none focus:ring-2 focus:ring-indigo-500 min-h-32 transition-shadow"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="Example: I run a restaurant / gym / agency. I want to automate reservations, answering FAQs, and follow-up messages for people who don’t complete a booking."
                   required
                 />
               </div>
+
               <button
                 type="submit"
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-black text-white dark:bg-white dark:text-black px-4 py-2.5 font-medium shadow hover:shadow-xl transition duration-200 hover:-translate-y-0.5 w-full sm:w-auto"
@@ -749,6 +783,7 @@ function Contact() {
                 Send My Project
                 <ArrowRight className="size-4" />
               </button>
+
               <p className="text-[11px] text-neutral-500 mt-1">
                 No newsletters, no spam. Just a direct reply with ideas tailored to your
                 business.
@@ -763,25 +798,23 @@ function Contact() {
 
 function Footer() {
   return (
-    <footer className="border-t border-black/5 dark:border-white/10 py-16 bg-neutral-950 text-neutral-100">
+    <footer className="border-t border-black/5 dark:border-white/10 py-16 bg-white text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-10">
-          
-          {/* Large, Bold Logo */}
-          <motion.div 
+          <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
             className="w-32 md:w-40"
           >
-            <Image 
-              alt="Logo" 
-              src={logo} 
+            <Image
+              alt="Logo"
+              src={logo}
               className="w-full h-auto object-contain"
               priority
             />
           </motion.div>
-          
-          <p className="text-sm text-neutral-400 text-center md:text-left max-w-xs md:max-w-none">
+
+          <p className="text-sm text-neutral-500 dark:text-neutral-400 text-center md:text-left max-w-xs md:max-w-none">
             © {new Date().getFullYear()} ShiftSense Studio. AI-powered experiences, human-first
             results.
           </p>
@@ -789,7 +822,7 @@ function Footer() {
           <div className="text-sm">
             <a
               href="#home"
-              className="group hover:text-indigo-200 transition-colors inline-flex items-center gap-2"
+              className="group hover:text-indigo-700 dark:hover:text-indigo-200 transition-colors inline-flex items-center gap-2"
             >
               <span className="hover:underline underline-offset-4">Back to top</span>
               <ArrowRight className="size-4 -rotate-90 group-hover:-translate-y-1 transition-transform" />
@@ -801,15 +834,11 @@ function Footer() {
   );
 }
 
-// Find your main Page export and change the wrapper div:
 export default function Page() {
   return (
-    // REMOVE "bg-white" and "dark:" prefixes. 
-    // Use the base colors you want everyone to see.
-    <div className="min-h-screen bg-neutral-950 text-neutral-50">
+    <div className="min-h-screen bg-white text-neutral-900 dark:bg-neutral-950 dark:text-neutral-50">
       <Header />
       <main>
-        {/* All other sections should now use bg-neutral-950 or bg-neutral-900 */}
         <Hero />
         <Services />
         <AiIdeas />
